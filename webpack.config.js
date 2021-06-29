@@ -1,7 +1,7 @@
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 
-module.exports = {
+let config = {
   mode: 'production',
   entry: './src/index.js',
   output: {
@@ -66,3 +66,33 @@ module.exports = {
     maxAssetSize: 512000
   },
 };
+
+module.exports = (env) => {
+  if (env === 'development') {
+    console.log()
+    config = {
+      ...config,
+      mode: 'development',
+      entry: './demo/index.js',
+      output: {
+        path: path.resolve(__dirname, './demo'),
+        filename: 'bundle.js',
+        hotUpdateChunkFilename: 'hot/hot-update.js',
+        hotUpdateMainFilename: 'hot/hot-update.json',
+      },
+      devServer: {
+        writeToDisk: true,
+      },
+      resolve: {
+        extensions: ['.js', '.vue'],
+        alias: {
+          src: path.resolve(__dirname, './src'),
+          dist: path.resolve(__dirname, './dist'),
+        },
+      },
+    }
+  }
+  return {
+    ...config
+  }
+}

@@ -37,7 +37,7 @@
       :showLunarButton="showLunarButton"
       :lang="lang"
       :dateLang="dateLang"
-      :customCells="customCells"
+      :showLunar="true"
       cellSeletedClass="custom-seleted-cell"
     ></lunar-calendar>
   </div>
@@ -58,22 +58,13 @@ export default {
       disableDaysBeforeToday: false,
       defaultDate: null,
       firstDayOfWeek: 0,
-      showLunar: false,
-      isLunarChecked: false,
+      showLunar: true,
+      isLunarChecked: true,
       showLunarButton: true,
       inputDate: '',
-      lang: 'ko',
+      lang: 'en',
       dateLang: 'en',
       langs: Translation,
-      customCells: [{
-        days: [this.formatDate(today.add(1, 'days')), this.formatDate(today.add(1, 'days'))],
-        customCellClass: "custom-cell",
-        groupName: "custom cell"
-      }, {
-        days: [this.formatDate(today.add(-3, 'days'))],
-        customCellClass: "custom-cell-2",
-        groupName: "custom cell 2"
-      }]
     };
   },
   methods: {

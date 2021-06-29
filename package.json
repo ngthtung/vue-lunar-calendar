@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server --hot --host 0.0.0.0",
+    "start": "webpack-dev-server --env development --hot --host 0.0.0.0 --watch --progress --assets-dest",
     "demo": "webpack --config webpack.dev.conf.js"
   },
   "devDependencies": {
